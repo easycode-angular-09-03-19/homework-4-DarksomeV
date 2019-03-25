@@ -1,0 +1,16 @@
+<div class="todo-item" [ngClass]="{ready:todo.completed}">
+  <p ngClass="task-num">Задача #{{index + 1}}</p>
+  <p ngClass="task-text" *ngIf="!editVar; else newEdit">{{todo.text}}</p>
+  <ng-template #newEdit>
+    <input type="text" [(ngModel)]="todo.text" name="text">
+    <button (click)="newText(todo.text)">Изменить</button>
+  </ng-template>
+  <p *ngIf="todo.completed" ngClass="status">Завершено</p>
+  <div class="action-block">
+    <button (click)="changeVar()" ngClass="btn btn-edit">Изменить задачу</button>
+    <button (click)="deleteComponent()" ngClass="btn btn-delete">Удалить</button>
+    <button (click)="changeComponent()"
+            [ngClass]="{btn:true, btn_resume:todo.completed, btn_complete:!todo.completed}">{{ todo.completed == true ? 'Возобновить' : 'Завершить' }}</button>
+  </div>
+</div>
+

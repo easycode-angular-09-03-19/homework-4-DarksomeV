@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Добавить задачу:</h2>
+
+  <form (ngSubmit)="onSubmit(addTodoForm)" #addTodoForm="ngForm" novalidate>
+    <textarea type="text" [(ngModel)]="newTodo.text" name="text" #todoText="ngModel" rows="4" required></textarea>
+    <button type="submit" [disabled]="addTodoForm.invalid">Добавить задачу</button>
+  </form>
+
+  <h3 *ngIf="todoItems.length > 0">Список задач:</h3>
+  <div class="todo-list">
+    <ng-container *ngFor="let todo of todoItems; let i = index">
+      <app-todo-item
+        (outputChange)="onOutputComplete($event)"
+        (outputDelete)="onOutputDelete($event)"
+        [todo]="todo"
+        [index]="i"
+      ></app-todo-item>
+    </ng-container>
+  </div>
+
+  <button *ngIf="todoItems.length > 0" (click)="completeAll()" ngClass="btn btn_complete"
+          [ngStyle]="{'margin-top':'15px'}">Завершить все задачи
+  </button>
+</div>

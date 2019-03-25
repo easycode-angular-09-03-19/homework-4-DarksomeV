@@ -1,0 +1,25 @@
+.todo-item {
+  padding: 20px;
+  border: 2px solid #000;
+}
+
+.todo-item p + p {
+  margin-top: 10px;
+}
+
+.todo-item .action-block {
+  margin-top: 10px;
+}
+
+.todo-item.ready {
+  border: 2px solid green;
+  background: rgba(0, 128, 0, 0.34);
+  position: relative;
+}
+
+.todo-item.ready .status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
